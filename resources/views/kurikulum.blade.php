@@ -6,7 +6,7 @@
    <div class="kingster-breadcrumbs-container kingster-container">
       <div class="kingster-breadcrumbs-item kingster-item-pdlr">
          <span property="itemListElement" typeof="ListItem">
-            <a property="item" typeof="WebPage" title="Beranda Sarjana Manajemen." href="{{ url('') }}" class="home"><span property="name">Beranda</span></a>
+            <a property="item" typeof="WebPage" title="Beranda ." href="{{ url('') }}" class="home"><span property="name">Beranda</span></a>
             <meta property="position" content="1">
          </span> &gt; <span property="itemListElement" typeof="ListItem">
             <span property="name" class="post post-page current-item">Kurikulum Manajemen</span>
