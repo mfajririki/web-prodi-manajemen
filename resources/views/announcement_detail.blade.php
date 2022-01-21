@@ -7,11 +7,11 @@
         <div class="kingster-breadcrumbs-container kingster-container">
             <div class="kingster-breadcrumbs-item kingster-item-pdlr">
                 <span property="itemListElement" typeof="ListItem">
-                    <a property="item" typeof="WebPage" title="Go to MTI." href="{{ url('') }}" class="home"><span
+                    <a property="item" typeof="WebPage" title="Go to ." href="{{ url('') }}" class="home"><span
                             property="name">Beranda</span></a>
                     <meta property="position" content="1">
                 </span> &gt; <span property="itemListElement" typeof="ListItem">
-                    <a property="item" typeof="WebPage" title="Go to MTI." href="{{ url('/pengumuman') }}"
+                    <a property="item" typeof="WebPage" title="Go to ." href="{{ url('/pengumuman') }}"
                         class="home"><span property="name">Pengumuman</span></a>
                     <meta property="position" content="2"></span>
                 </span> &gt; <span property="itemListElement" typeof="ListItem">
