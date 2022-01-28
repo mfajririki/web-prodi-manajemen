@@ -60,6 +60,7 @@
                                                 <tr>
                                                     <td>
                                                         {{ $pembimbing_akademik->document }}
+                                                        <input type="hidden" name="old" value="{{ $pembimbing_akademik->document }}">
                                                     </td>
                                                     <td>
                                                         <a class="btn btn-sm btn-info"

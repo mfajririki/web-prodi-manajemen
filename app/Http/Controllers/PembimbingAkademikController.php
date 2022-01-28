@@ -68,14 +68,16 @@ class PembimbingAkademikController extends Controller
         //     'title' => 'required',
         // ]);
 
-        $document = $request->file('document');
-        $nama_document = time() . "_" . $document->getClientOriginalName();
-        $tujuan_upload = public_path('document/');
-        $document->move($tujuan_upload, $nama_document);
+        if ($request->hasFile('document')) {
+            $document = $request->file('document');
+            $nama_document = time() . "_" . $document->getClientOriginalName();
+            $tujuan_upload = public_path('document/');
+            $document->move($tujuan_upload, $nama_document);
+        }
 
         $pembimbing_akademik = PembimbingAkademik::where('id', $id)
             ->update([
-                'document' => 'document/' . $nama_document,
+                'document' => request('document') ? 'document/' . $nama_document : $request->old,
                 'title'          => $request->title,
             ]);
 

@@ -108,6 +108,7 @@
                                                 <tr>
                                                     <td>
                                                         {{ $kurikulum->document }}
+                                                        <input type="hidden" name="old" value="{{ $kurikulum->document }}">
                                                     </td>
                                                     <td>
                                                         <a class="btn btn-sm btn-info"

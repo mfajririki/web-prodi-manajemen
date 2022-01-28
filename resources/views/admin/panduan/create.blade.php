@@ -46,7 +46,7 @@
                                         <label for="exampleInputFile">Dokumen Lampiran<span class="text-danger">.docx, .doc, .pdf, .xlsx</span></label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" name="document" class="custom-file-input" multiple="">
+                                                <input type="file" name="document" class="custom-file-input" multiple="" required>
                                                 <label class="custom-file-label" for="exampleInputFile">Pilih Dokumen</label>
                                             </div>
                                         </div>
