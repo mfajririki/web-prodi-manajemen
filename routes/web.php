@@ -60,4 +60,13 @@ Route::resource('/profile_kaprodi', ProfileKaprodiController::class);
 Route::resource('/slider', SliderController::class);
 Route::resource('/user', UsersController::class);
 
+Route::get('/kurikulum/delete_all', [KurikulumsController::class, 'delete_all']);
+Route::post('/kurikulum/import_excel', [KurikulumsController::class, 'import_excel']);
+Route::get('/minat/delete_all', [BidangMinatController::class, 'delete_all']);
+Route::post('/minat/import_excel', [BidangMinatController::class, 'import_excel']);
+Route::get('/profilelulusan/delete_all', [ProfileLulusanController::class, 'delete_all']);
+Route::post('/profilelulusan/import_excel', [ProfileLulusanController::class, 'import_excel']);
+Route::get('/staf/delete_all', [StafController::class, 'delete_all']);
+Route::post('/staf/import_excel', [StafController::class, 'import_excel']);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

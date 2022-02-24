@@ -7,6 +7,9 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
+use App\Http\Controllers\Controller;
+use App\Imports\StafImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StafController extends Controller
 {
@@ -90,10 +93,41 @@ class StafController extends Controller
             unlink($staf_pengajar->photo);
         }
 
-
-
         $staf_pengajar->delete();
 
         return redirect(route('staf_pengajar.index'))->with('alert', 'Data berhasil dihapus!');
+    }
+
+    public function import_excel(Request $request)
+    {
+        // validasi
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        // menangkap file excel
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = time() . $file->getClientOriginalName();
+
+        // upload ke folder file_siswa di dalam folder public
+        $file->move('document/import/', $nama_file);
+
+        // import data
+        Excel::import(new StafImport, public_path('/document/import/' . $nama_file));
+
+        // notifikasi dengan session
+        // Session::flash('sukses', 'Data Siswa Berhasil Diimport!');
+
+        // alihkan halaman kembali
+        return redirect(route('staf_pengajar.index'))->with('alert', 'Import berhasil.');
+    }
+
+    public function delete_all(Staf $staf)
+    {
+        $staf->truncate();
+
+        return redirect(route('staf_pengajar.index'))->with('alert', 'Semua data berhasil dihapus');
     }
 }

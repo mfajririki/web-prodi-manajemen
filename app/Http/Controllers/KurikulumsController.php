@@ -7,6 +7,9 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
+use App\Http\Controllers\Controller;
+use App\Imports\KurikulumImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KurikulumsController extends Controller
 {
@@ -106,5 +109,38 @@ class KurikulumsController extends Controller
         $document->update(['document' => null]);
 
         return back()->with('alert', 'Dokumen berhasil dihapus!');
+    }
+
+    public function import_excel(Request $request)
+    {
+        // validasi
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        // menangkap file excel
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = time() . $file->getClientOriginalName();
+
+        // upload ke folder file_siswa di dalam folder public
+        $file->move('document/import/', $nama_file);
+
+        // import data
+        Excel::import(new KurikulumImport, public_path('/document/import/' . $nama_file));
+
+        // notifikasi dengan session
+        // Session::flash('sukses', 'Data Siswa Berhasil Diimport!');
+
+        // alihkan halaman kembali
+        return redirect(route('kurikulums.index'))->with('alert', 'Import berhasil.');
+    }
+
+    public function delete_all(Kurikulums $kurikulum)
+    {
+        $kurikulum->truncate();
+
+        return redirect(route('kurikulums.index'))->with('alert', 'Semua data berhasil dihapus');
     }
 }
