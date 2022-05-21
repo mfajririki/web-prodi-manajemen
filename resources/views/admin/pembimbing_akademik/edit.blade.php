@@ -76,6 +76,7 @@
                                                 @endif
                                             </tbody>
                                         </table>
+                                        @if ($pembimbing_akademik->document==null)
                                         <label for="exampleInputFile" class="mt-3">Tambah Dokumen<span class="text-danger"> .docx, .doc, .pdf, .xlsx</span></label>
                                         <div class="input-group">
                                             <div class="custom-file">
@@ -84,6 +85,7 @@
                                                     Dokumen</label>
                                             </div>
                                         </div>
+                                        @endif                                        
                                     </div>
                                 </div>
                             </div>

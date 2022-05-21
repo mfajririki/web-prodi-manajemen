@@ -4,17 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Manajemen UBD | Dashboard</title>
+    <title>SI UBD | Dashboard</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('adminLTE/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('adminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('adminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('adminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- Theme style -->
@@ -28,7 +30,8 @@
     <!-- Announcement Spesific -->
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('adminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('adminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('adminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('adminLTE/plugins/summernote/summernote-bs4.min.css') }}">
@@ -44,7 +47,8 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars"></i></a>
                 </li>
             </ul>
         </nav>
@@ -58,7 +62,8 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('adminLTE/img/user8-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                        <img src="{{ asset('adminLTE/img/user8-128x128.jpg') }}" class="img-circle elevation-2"
+                            alt="User Image">
                     </div>
                     <div class="info">
                         {{-- <a class="d-block">{{ Auth::user()->name }}</a> --}}
@@ -67,139 +72,176 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
                         <li class="nav-header">MAIN MENU</li>
 
                         <li class="nav-item">
-                            <a href="{{ url('/admin') }}" class="nav-link {{ Request::segment(1) == 'admin'  ? 'active' : '' }}">
+                            <a href="{{ url('/admin') }}"
+                                class="nav-link {{ Request::segment(1) == 'admin' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         {{-- Dropdown Beranda --}}
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-folder"></i>
-                              <p>
-                                Beranda
-                                <i class="fas fa-angle-left right"></i>
-                              </p>
+                                <i class="nav-icon fas fa-folder"></i>
+                                <p>
+                                    Beranda
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <div class="container">
-                                <li class="nav-item">
-                                    <a href="{{ route('visi_misi.index') }}" class="nav-link {{ Request::segment(1) == 'visi_misi'  ? 'active' : '' }}">
-                                        <i class="nav-icon fas fa-flag"></i>
-                                        <p>Visi & Misi</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('tujuans.index') }}" class="nav-link {{ Request::segment(1) == 'tujuans'  ? 'active' : '' }}">
-                                        <i class="nav-icon fas fa-flag"></i>
-                                        <p>Tujuan</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('tentang.index') }}" class="nav-link {{ Request::segment(1) == 'tentang'  ? 'active' : '' }}">
-                                        <i class="nav-icon fas fa-file"></i>
-                                        <p>Tentang Prodi Manajemen</p>
-                                    </a>
-                                </li>                                
-                                <li class="nav-item">
-                                    <a href="{{ route('profile_kaprodi.index') }}" class="nav-link {{ Request::segment(1) == 'profile_kaprodi'  ? 'active' : '' }}">
-                                        <i class="nav-icon fas fa-user"></i>
-                                        <p>Profil Kaprodi</p>
-                                    </a>
-                                </li>
+
                                 </div>
                             </ul>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a href="{{ route('admin-alumnus.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'admin-alumnus' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-graduation-cap"></i>
+                                <p>Alumni</p>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('announcement.index') }}" class="nav-link {{ Request::segment(1) == 'announcement'  ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-bullhorn"></i>
-                                <p>Pengumuman</p>
+                            <a href="{{ route('pembimbing_akademik.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'pembimbing_akademik' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>Bimbingan Akademik</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin-prasarana.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'admin-prasarana' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-archive"></i>
+                                <p>Fasilitas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin-lowongankerja.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'admin-lowongankerja' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-exclamation"></i>
+                                <p>Lowongan Kerja</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin-iabee.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'admin-iabee' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-flag"></i>
+                                <p>IABEE</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin-kaprodi.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'admin-kaprodi' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>Kaprodi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin-kerjasama.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'admin-kerjasama' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-share-alt"></i>
+                                <p>Kerja Sama</p>
                             </a>
                         </li>
                         {{-- Dropdown Kurikulum --}}
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-folder"></i>
-                              <p>
-                                Kurikulum
-                                <i class="fas fa-angle-left right"></i>
-                              </p>
+                                <i class="nav-icon fas fa-folder"></i>
+                                <p>
+                                    Kurikulum
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <div class="container">
-                                <li class="nav-item">
-                                    <a href="{{ route('kurikulums.index') }}" class="nav-link {{ Request::segment(1) == 'kurikulums'  ? 'active' : '' }}">
-                                        <i class="nav-icon fas fa-book"></i>
-                                        <p>Distribusi Mata Kuliah</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('bidangminat.index') }}" class="nav-link {{ Request::segment(1) == 'bidangminat'  ? 'active' : '' }}">
-                                        <i class="nav-icon fas fa-book"></i>
-                                        <p>MK Bidang Minat</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('pembimbing_akademik.index') }}" class="nav-link {{ Request::segment(1) == 'pembimbing_akademik'  ? 'active' : '' }}">
-                                        <i class="nav-icon fas fa-users"></i>
-                                        <p>Bimbingan Akademik</p>
-                                    </a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('kurikulums.index') }}"
+                                            class="nav-link {{ Request::segment(1) == 'kurikulums' ? 'active' : '' }}">
+                                            <i class="nav-icon fas fa-book"></i>
+                                            <p>Distribusi Mata Kuliah</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('bidangminat.index') }}"
+                                            class="nav-link {{ Request::segment(1) == 'bidangminat' ? 'active' : '' }}">
+                                            <i class="nav-icon fas fa-book"></i>
+                                            <p>MK Bidang Minat</p>
+                                        </a>
+                                    </li>
                                 </div>
                             </ul>
-                          </li>
-                          <li class="nav-item">
-                            <a href="{{ route('panduan.index') }}" class="nav-link {{ Request::segment(1) == 'panduan'  ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-file"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin-panduan.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'admin-panduan' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-bullhorn"></i>
                                 <p>Panduan</p>
                             </a>
                         </li>
-                        {{-- Tentang --}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-folder"></i>
-                              <p>
-                                Tentang
-                                <i class="fas fa-angle-left right"></i>
-                              </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <div class="container">
-                                <li class="nav-item">
-                                    <a href="{{ route('staf_pengajar.index') }}" class="nav-link {{ Request::segment(1) == 'staf_pengajar'  ? 'active' : '' }}">
-                                        <i class="nav-icon fas fa-users"></i>
-                                        <p>Staf Pengajar</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('profile_lulusan.index') }}" class="nav-link {{ Request::segment(1) == 'profile_lulusan'  ? 'active' : '' }}">
-                                        <i class="nav-icon fas fa-file"></i>
-                                        <p>Profil Lulusan</p>
-                                    </a>
-                                </li>
-                                </div>
-                            </ul>
-                        </li>                        
-                        <li class="nav-item">
-                            <a href="{{ route('slider.index') }}" class="nav-link {{ Request::segment(1) == 'slider'  ? 'active' : '' }}">
-                                <i class="nav-icon fas  fa-clone"></i>
-                                <p>Slider</p>
+                            <a href="{{ route('announcement.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'announcement' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-bullhorn"></i>
+                                <p>Pengumuman</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('user.index') }}" class="nav-link {{ Request::segment(1) == 'user'  ? 'active' : '' }}">
+                            <a href="{{ route('profile_lulusan.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'profile_lulusan' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-file"></i>
+                                <p>Profil Lulusan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('staf_pengajar.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'staf_pengajar' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>Staf Pengajar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('tentang.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'tentang' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-list-alt"></i>
+                                <p>Tentang Prodi MANAJEMEN</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('tujuans.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'tujuans' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-flag"></i>
+                                <p>Tujuan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('visi_misi.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'visi_misi' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-flag"></i>
+                                <p>Visi & Misi</p>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a href="{{ route('slider.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'slider' ? 'active' : '' }}">
+                                <i class="nav-icon fas  fa-clone"></i>
+                                <p>Slider</p>
+                            </a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a href="{{ route('user.index') }}"
+                                class="nav-link {{ Request::segment(1) == 'user' ? 'active' : '' }}">
                                 <i class="nav-icon fas  fa-user-plus"></i>
                                 <p>User</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('landing') }}" class="nav-link">
+                            <a href="/" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>Beranda Depan</p>
                             </a>
@@ -216,12 +258,14 @@
                         </li> -->
 
                         <li class="nav-item">
-                            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <a href="{{ route('logout') }}" class="nav-link"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>Log out</p>
                             </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                class="d-none"> @csrf </form>
                         </li>
                     </ul>
                 </nav>
@@ -307,9 +351,9 @@
         });
     </script>
 
-    {{-- tree --}}    
+    {{-- tree --}}
     <script>
-         $('ul').on('expanded.lte.treeview', handleExpandedEvent)
+        $('ul').on('expanded.lte.treeview', handleExpandedEvent)
     </script>
     <script>
         $('ul').Treeview()
@@ -325,7 +369,10 @@
                     // [groupName, [list of button]]
                     ['style', ['bold', 'italic', 'underline']],
                     ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['table', 'picture', 'video', 'link']]
                 ]
             });
         })
@@ -335,6 +382,7 @@
         $(function() {
             bsCustomFileInput.init();
         });
-    </script>    
+    </script>
 </body>
+
 </html>

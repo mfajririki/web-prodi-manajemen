@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\BidangMinatImport;
 use App\Models\BidangMinat;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
-use App\Http\Controllers\Controller;
-use App\Imports\BidangMinatImport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class BidangMinatController extends Controller
 {

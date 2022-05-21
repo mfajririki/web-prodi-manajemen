@@ -15,9 +15,12 @@ class CreateStafPengajarTable extends Migration
     {
         Schema::create('staf_pengajar', function (Blueprint $table) {
             $table->id();
+            $table->text('photo')->nullable();
             $table->string('nama');
             $table->string('nidn');
             $table->string('jabatan');
+            $table->string('email');
+            $table->string('sintaid')->nullable();
             $table->timestamps();
         });
     }

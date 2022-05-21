@@ -1,0 +1,130 @@
+.bg-ligt {
+    background-color: white;
+    color: white;
+}
+
+.judul {
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(24, 56, 131);
+}
+
+.subJudul {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(23, 35, 80);
+}
+
+.subJudulProfilLulusan {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(23, 35, 80);
+}
+
+.subJudulNamaKaprodi {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.cardImage {
+    height: 175px;
+    object-fit: cover;
+}
+
+.imageKerjaSama {
+    width: 330px;
+    height: 150px;
+}
+
+.bgGrey {
+    background-color: rgb(231, 237, 254);
+    padding-bottom: 20px;
+}
+
+.imgAlumni {
+    width: 220px;
+    height: 220px;
+}
+
+.bgBlue {
+    background-color: rgb(23, 35, 80);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+}
+
+.footerLink {
+    color: white;
+    text-decoration: none;
+}
+
+.footerJudul {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.boxShadow {
+    box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.200);
+}
+
+.imgFasilitas {
+    width: 370px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.imgKerjaSama {
+    width: 370px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.subJudulKerjaSama {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(24, 55, 131);
+}
+
+.imgMBKM {
+    width: 370px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.subJudulMBKM {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(23, 35, 80);
+}
+
+.imgProgramMBKM {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    align-self: center;
+}
+
+.linkLoker {
+    text-decoration: none;
+    color: blue;
+}
+
+.linkLoker:hover {
+    color: red;
+}
+
+.loginLink {
+    color: white;
+    text-decoration: none;
+}
+
+.loginLink:hover {
+    color: red;
+}
+
+.imgStaf {
+    height: 170px;
+    width: 170px;
+    object-fit: cover;
+}

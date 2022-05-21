@@ -29,11 +29,6 @@ class PanduanController extends Controller
 
     public function store(Request $request)
     {
-        // Validate posted form data
-        // $this->validate($request, [
-        //     'document' => 'required|file|mimes:docx,doc,pdf,xlsx|max:2048',
-        //     'title' => 'required',
-        // ]);
 
         DB::transaction(function () use ($request) {
             $document = $request->file('document');
@@ -48,7 +43,7 @@ class PanduanController extends Controller
         });
 
         // Redirect the user to the created post with a success notification
-        return redirect(route('panduan.index'))->with('alert', 'Panduan berhasil dibuat!');
+        return redirect(route('admin-panduan.index'))->with('alert', 'Panduan berhasil dibuat!');
     }
 
     public function show($id)
@@ -63,12 +58,7 @@ class PanduanController extends Controller
 
     public function update($id, Request $request)
     {
-        // $this->validate($request, [
-        //     'document' => 'required|file|mimes:docx,doc,pdf,xlsx|max:2048',
-        //     'title' => 'required',
-        // ]);
-
-        if ($request->hasFile('document')) {
+        if ($request->file('document')) {
             $document = $request->file('document');
             $nama_document = time() . "_" . $document->getClientOriginalName();
             $tujuan_upload = public_path('document/');
@@ -77,18 +67,18 @@ class PanduanController extends Controller
 
         $panduan = Panduan::where('id', $id)
             ->update([
-                'document' => request('document') ? 'document/' . $nama_document : $request->old,
+                'document' => request('document') ? "document/" . $nama_document : $request->old,
                 'title'          => $request->title,
             ]);
 
-        return redirect(route('panduan.index'))->with('alert', 'Pengumuman berhasil diupdate!');
+        return redirect(route('admin-panduan.index'))->with('alert', 'Pengumuman berhasil diupdate!');
     }
 
     public function destroy(Panduan $panduan)
     {
         $panduan->delete();
 
-        return redirect(route('panduan.index'))->with('alert', 'Pengumuman berhasil dihapus!');
+        return redirect(route('admin-panduan.index'))->with('alert', 'Pengumuman berhasil dihapus!');
     }
 
     public function hapus_doc($id, Request $request)

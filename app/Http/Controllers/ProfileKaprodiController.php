@@ -19,12 +19,12 @@ class ProfileKaprodiController extends Controller
     {
         $profile_kaprodi  = ProfileKaprodi::get();
 
-        return view('admin.profile_kaprodi.index', compact('profile_kaprodi',));
+        return view('admin.kaprodi.index', compact('profile_kaprodi',));
     }
 
     public function create()
     {
-        return view('admin.profile_kaprodi.create');
+        return view('admin.kaprodi.create');
     }
 
     public function store(Request $request)
@@ -47,7 +47,7 @@ class ProfileKaprodiController extends Controller
         });
 
         // Redirect the user to the created post with a success notification
-        return redirect(route('profile_kaprodi.index'))->with('alert', 'Profil berhasil dibuat!');
+        return redirect(route('admin-kaprodi.index'))->with('alert', 'Profil berhasil dibuat!');
     }
 
     public function show($id)
@@ -57,7 +57,7 @@ class ProfileKaprodiController extends Controller
 
     public function edit(ProfileKaprodi $profile_kaprodi)
     {
-        return view('admin.profile_kaprodi.edit', compact('profile_kaprodi',));
+        return view('admin.kaprodi.edit', compact('profile_kaprodi',));
     }
 
     public function update($id, Request $request)
@@ -76,7 +76,7 @@ class ProfileKaprodiController extends Controller
                 'photo'          => request('photo') ? "images/kaprodi/" . $image_name : $request->old,
             ]);
 
-        return redirect(route('profile_kaprodi.index'))->with('alert', 'Profil berhasil diupdate!');
+        return redirect(route('admin-kaprodi.index'))->with('alert', 'Profil berhasil diupdate!');
     }
 
     public function destroy(ProfileKaprodi $profile_kaprodi)
@@ -87,6 +87,6 @@ class ProfileKaprodiController extends Controller
 
         $profile_kaprodi->delete();
 
-        return redirect(route('profile_kaprodi.index'))->with('alert', 'Profil berhasil dihapus!');
+        return redirect(route('admin-kaprodi.index'))->with('alert', 'Profil berhasil dihapus!');
     }
 }

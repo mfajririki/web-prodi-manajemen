@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alumnus;
 use App\Models\Announcement;
 use App\Models\BidangMinat;
 use App\Models\Staf;
 use App\Models\Document;
+use App\Models\Iabee;
 use App\Models\Kurikulums;
 use App\Models\Panduan;
 use App\Models\PembimbingAkademik;
+use App\Models\Kaprodi;
+use App\Models\KerjaSama;
+use App\Models\LowonganKerja;
+use App\Models\Prasarana;
 use App\Models\ProfileKaprodi;
 use App\Models\ProfileLulusan;
 use App\Models\Slider;
@@ -25,23 +31,14 @@ class PublicController extends Controller
 {
     public function halamanUtama()
     {
-        $tentang = Tentang::get();
-        $visi_misi = VisiMisi::get();
-        $tujuan = Tujuans::get();
-        $profile_kaprodi = ProfileKaprodi::get();
-        $sliders = Slider::get();
         $title = "Beranda";
+        $profile_kaprodi = ProfileKaprodi::get();
+        $latest_news = Announcement::latest()->limit(3)->get();
+        $alumnus = Alumnus::latest()->limit(3)->get();
 
         return view(
-            'landing',
-            compact(
-                'tentang',
-                'visi_misi',
-                'tujuan',
-                'title',
-                'profile_kaprodi',
-                'sliders'
-            ),
+            'new_ui.beranda',
+            compact('profile_kaprodi', 'latest_news', 'alumnus')
         );
     }
 
@@ -58,31 +55,29 @@ class PublicController extends Controller
     public function pengumuman()
     {
         $announcements  = Announcement::latest()->paginate(8);
-        $latests  = Announcement::latest()->limit(6)->get();
-        $sliders = Slider::get();
-        $title = "Pengumuman";
 
-        return view('pengumuman_only', compact('announcements', 'latests', 'title', 'sliders'));
+        return view('new_ui.pengumuman', compact('announcements'));
     }
 
     public function berita()
     {
         $announcements  = Announcement::latest()->paginate(8);
-        $latests  = Announcement::latest()->limit(6)->get();
-        $sliders = Slider::get();
-        $title = "Pengumuman - Berita";
 
-        return view('pengumuman_berita', compact('announcements', 'latests', 'title', 'sliders'));
+        return view('new_ui.berita', compact('announcements'));
     }
 
     public function prestasi()
     {
         $announcements  = Announcement::latest()->paginate(8);
-        $latests  = Announcement::latest()->limit(6)->get();
-        $sliders = Slider::get();
-        $title = "Pengumuman - Prestasi";
 
-        return view('pengumuman_prestasi', compact('announcements', 'latests', 'title', 'sliders'));
+        return view('new_ui.prestasi', compact('announcements'));
+    }
+
+    public function lowongankerja()
+    {
+        $lowongan_kerja = LowonganKerja::latest()->get();
+
+        return view('new_ui.lowongan_kerja', compact('lowongan_kerja'));
     }
 
     public function show(Announcement $announcement)
@@ -92,49 +87,82 @@ class PublicController extends Controller
         return view('announcement_detail', compact('announcement', 'title', 'sliders'));
     }
 
-    public function staf()
-    {
-        $staf_pengajar = Staf::paginate(10);
-        $sliders = Slider::get();
-        $title = "Staf Pengajar";
-
-        return view('staf', compact('staf_pengajar', 'title', 'sliders'));
-    }
-
-    public function kurikulum_konten()
+    public function kurikulum()
     {
         $kurikulum = Kurikulums::get();
-        $mk_bidangminat = BidangMinat::get();
-        $sliders = Slider::get();
-        $title = "Kurikulum";
-
-        return view('kurikulum', compact('kurikulum', 'mk_bidangminat', 'title', 'sliders'));
+        $bidangminat = BidangMinat::get()->sortBy('semester');
+        return view('new_ui.kurikulum', compact('kurikulum', 'bidangminat'));
     }
 
-    public function halpanduan()
+    public function panduan()
     {
-        $panduan = Panduan::get();
-        $sliders = Slider::get();
-        $title = "Panduan";
+        $panduans = Panduan::latest()->get();
 
-        return view('panduan', compact('panduan', 'title', 'sliders'));
+        return view('new_ui.panduan', compact('panduans'));
     }
 
-    public function bimbingan_akademik()
+    public function bimbinganakademik()
     {
-        $pembimbing_akademik = PembimbingAkademik::get();
-        $sliders = Slider::get();
-        $title = "Bimbingan Akademik";
+        $bimbinganakademik = PembimbingAkademik::get();
 
-        return view('bimbingan_akademik', compact('pembimbing_akademik', 'title', 'sliders'));
+        return view('new_ui.bimbingan_akademik', compact('bimbinganakademik'));
     }
 
-    public function profilelulusan()
+    public function profillulusan()
     {
-        $profilelulusan = ProfileLulusan::get();
-        $sliders = Slider::get();
-        $title = "Profil Lulusan";
+        $profile_lulusan = ProfileLulusan::get();
 
-        return view('profilelulusan', compact('profilelulusan', 'title', 'sliders'));
+        return view('new_ui.profil_lulusan', compact('profile_lulusan'));
+    }
+
+    public function tentangprodi()
+    {
+        $tentang = Tentang::get();
+
+        return view('new_ui.tentang', compact('tentang'));
+    }
+
+    public function visimisitujuan()
+    {
+
+        $visi_misi = VisiMisi::get();
+        $tujuan = Tujuans::get();
+
+        return view('new_ui.visi_misi_tujuan', compact('visi_misi', 'tujuan'));
+    }
+
+    public function stafpengajar()
+    {
+        $staf_pengajar = Staf::paginate(10);
+
+        return view('new_ui.staf_pengajar', compact('staf_pengajar'));
+    }
+
+    public function fasilitas()
+    {
+        $prasarana = Prasarana::get();
+
+        return view('new_ui.fasilitas', compact('prasarana'));
+    }
+
+    public function kerjasama()
+    {
+        $kerja_sama = KerjaSama::get();
+
+        return view('new_ui.kerja_sama', compact('kerja_sama'));
+    }
+
+    public function mbkm()
+    {
+        $announcements  = Announcement::latest()->paginate(8);
+
+        return view('new_ui.mbkm', compact('announcements'));
+    }
+
+    public function iabee()
+    {
+        $iabee = Iabee::get();
+
+        return view('new_ui.iabee', compact('iabee'));
     }
 }

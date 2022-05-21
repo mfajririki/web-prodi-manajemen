@@ -11,8 +11,11 @@ class Staf extends Model
 
     protected $table = 'staf_pengajar';
     protected $fillable = [
+        'photo',
         'nama',
         'nidn',
         'jabatan',
+        'email',
+        'sintaid'
     ];
 }

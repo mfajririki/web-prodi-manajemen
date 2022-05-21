@@ -45,7 +45,7 @@
                                             <label for="exampleInputFile">Photo <span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" name="photo" class="custom-file-input" id="exampleInputFile">
+                                                    <input type="file" name="photo" class="custom-file-input" id="exampleInputFile" required>
                                                     @error('nama')
                                                     <div class="mt-2 text-danger">{{ $message }}</div>
                                                     @enderror
